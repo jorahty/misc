@@ -85,4 +85,4 @@ for p = 0.8 [
 
 As $n$ becomes large the limiting value
 for $P(\text{Bob tosses more heads than Alice})$
-approaches $p$, the probability of heads.
+approaches $1/2$, regardless of $p$, the probability of heads.
