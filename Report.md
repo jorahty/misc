@@ -13,7 +13,7 @@
 Results demonstrate that indeed
 
 $$
-P(\text{last ball is carmine}) = P(\text{last ball is carmine}) = 1/2
+P(\text{last ball is azure}) = P(\text{last ball is carmine}) = 1/2
 $$
 
 and that this probability is independent of the initial values of $a$ and $c$.
