@@ -77,11 +77,7 @@ Provided. Generates `qsec` and `digsel` and `clk`.
 <tr><td>Add8</td><td>Taken directly from Lab 2.</td></tr>
 <table>
 
-<div style="padding: 30px; background: #1e1e1e">
-
-![top-level diagram](top-diagram.jpg)
-
-</div>
+![top-level diagram](top-diagram2.jpg)
 
 ## Testing & Simulation
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, ducimus veritatis. Dolor, recusandae quidem sed atque dignissimos dolorem unde perspiciatis a, amet maxime veniam inventore molestiae veritatis voluptatum hic aperiam iste fugiat eos iusto sequi esse eveniet consectetur beatae reprehenderit. Quis voluptates maxime, accusantium aut assumenda omnis sunt fuga nemo.
