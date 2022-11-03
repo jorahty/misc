@@ -48,7 +48,14 @@ Linear Feedback Shift Register (LFSR) rapidly iterates through a sequence of all
 <td>discusses the component's design. Include any truth tables or 
 </td>
 </tr>
-<tr><td>lab4_clks</td><td> Provided; Generates `qsec` and `digsel` and `clk`.</td></tr>
+<tr><td>lab4_clks
+</td>
+<td>
+
+Provided; Generates `qsec` and `digsel` and `clk`.
+
+</td>
+</tr>
 <tr>
 <tr><td>countUD5L</td><td>Taken directly from lab 3</td></tr>
 <tr><td>RingCounter</td><td>Taken directly from lab 2</td></tr>
