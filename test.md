@@ -28,47 +28,53 @@ If the player presses `btnU` when the sum of the pair of digits (modulo 16) matc
 <tr>
 <td>top_lab4</td>
 <td>
+
 This is the only component with access to external inputs (`clkin, btnC, sw[15], etc.`) and external outputs (`led, seg, an, etc.`). This top-level component is responsible for managing and connecting all of the other subcomponents. For example, the random hex values are added with `Add8` and compared to the target sum to determine the value of match. Also, `an[3:0]` is set with respect to the output of `RingCounter` and `FlashAlt` and `FlashAlt`. For all other details see the full top-level diagram below.
+
 </td>
 </tr>
 <tr>
 <td>StateMachine</td>
 <td>
+
 Keeps track of which phase the game is in: `IDLE`, `WAIT`, `RIGHT`, `WRONG`. The `Go` input transitions from `IDLE` to `WAIT`. The `Match` signal is used to determine whether to transition to `RIGHT` or `WRONG`, and therefore set either `FlashAlt` or `FlashBoth` to high respectivley. See the appendix below for the complete state diagram and one-hot encoding equations.
+
 </td>
 </tr>
 <tr>
 <td>LFSR</td>
 <td>
-Linear Feedback Shift Register (LFSR) rapidly iterates through a sequence of all 255 non-zero values then repeats. An 8-bit random number is given by reading the components output at a random time. LFSR can be implemented with nothing but a shift register where the input to the first register $\text{D[0]}$ is a function of outputs of other specific registers: $\text{D[0]} = \text{rnd[0]} + \text{rnd[5]} + \text{rnd[6]} + \text{rnd[6]}$
+
+Linear Feedback Shift Register (`LFSR`) rapidly iterates through a sequence of all 255 non-zero values then repeats. An 8-bit random number is given by reading the components output at a random time. LFSR can be implemented with nothing but a shift register where the input to the first register $\text{D[0]}$ is a function of outputs of other specific registers: $$\text{D[0]} = \text{rnd[0]} \oplus \text{rnd[5]} \oplus \text{rnd[6]} \oplus \text{rnd[6]}$$
+
 </td>
 </tr>
 <tr>
 <td>LED_Shifter</td>
-<td>discusses the component's design. Include any truth tables or 
-</td>
-</tr>
-<tr><td>lab4_clks
-</td>
 <td>
 
-Provided; Generates `qsec` and `digsel` and `clk`.
+Nothing but a 15-bit shift register tasked with keeping track of the player's points. Let $D$ be the input and $Q$ be the output of a bus of 15 flip-flops. Then:
+- If `~SHL & ~SHR` then $D = Q$
+- If `SHL & ~SHR` then $D = \{Q[14:0],1\}$
+- If `~SHL & SHR` then $D = \{0,Q[15:1]\}$
+- If `SHL & SHR` then $D$ is undefined (this should never happen)
 
 </td>
 </tr>
 <tr>
-<tr><td>countUD5L</td><td>Taken directly from lab 3</td></tr>
-<tr><td>RingCounter</td><td>Taken directly from lab 2</td></tr>
-<tr><td>Selector</td><td>Taken directly from lab 2</td></tr>
-<tr><td>hex7seg</td><td>Taken directly from lab 2</td></tr>
-<tr><td>Add8</td><td>Taken directly from lab 2</td></tr>
-<tr><td>
-<div style="border: 1px solid red">
+<td>lab4_clks</td>
+<td>
 
-*Emphasized* text.
+Provided. Generates `qsec` and `digsel` and `clk`.
 
-</div>
-</td></tr>
+</td>
+</tr>
+<tr>
+<tr><td>countUD5L</td><td>Taken directly from Lab 3.</td></tr>
+<tr><td>RingCounter</td><td>Taken directly from Lab 2.</td></tr>
+<tr><td>Selector</td><td>Taken directly from Lab 2.</td></tr>
+<tr><td>hex7seg</td><td>Taken directly from Lab 2.</td></tr>
+<tr><td>Add8</td><td>Taken directly from Lab 2.</td></tr>
 <table>
 
 ![top-level diagram](top.png)
